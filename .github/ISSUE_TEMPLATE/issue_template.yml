@@ -1,0 +1,103 @@
+name: Nova Issue / New Issue
+description: Template padronizado para criação de issues (Português & English)
+title: "[ISSUE] Título da Issue / Issue Title"
+labels: ["enhancement", "documentation"]
+assignees: 
+  - ""
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📌 Instruções | Instructions
+        - Preencha todas as seções conforme necessário.
+        - A descrição deve ser clara e detalhada para facilitar a execução da tarefa.
+        - Utilize a checklist para organizar as etapas.
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: "📝 Descrição | Description"
+      description: "Explique a finalidade desta issue e o problema que ela resolve."
+      placeholder: "Exemplo: Implementar funcionalidade X..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: "📂 Contexto do Projeto | Project Context"
+      description: "Forneça detalhes sobre como essa issue se encaixa no projeto."
+      placeholder: "Exemplo: Esse projeto é um repositório de conteúdos socialistas/comunistas..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: objetivos
+    attributes:
+      label: "🎯 Objetivos | Objectives"
+      description: "Liste os principais objetivos desta issue."
+      placeholder: "- Objetivo 1...\n- Objetivo 2..."
+
+  - type: textarea
+    id: requisitos_funcionais
+    attributes:
+      label: "⚙️ Requisitos Funcionais | Functional Requirements"
+      description: "Defina os requisitos funcionais desta tarefa."
+      placeholder: "- Funcionalidade 1...\n- Funcionalidade 2..."
+
+  - type: textarea
+    id: requisitos_nao_funcionais
+    attributes:
+      label: "🚀 Requisitos Não Funcionais | Non-Functional Requirements"
+      description: "Defina requisitos como desempenho, segurança e usabilidade."
+      placeholder: "- Critério de desempenho...\n- Critério de segurança..."
+
+  - type: textarea
+    id: criterios_aceitacao
+    attributes:
+      label: "✅ Critérios de Aceitação | Acceptance Criteria"
+      description: "Liste os critérios para considerar essa issue concluída com sucesso."
+      placeholder: "- O sistema deve...\n- O usuário deve ser capaz de..."
+
+  - type: checkboxes
+    id: tarefas
+    attributes:
+      label: "📌 Tarefas e Subtarefas | Tasks and Subtasks"
+      description: "Liste as tarefas e marque conforme forem concluídas."
+      options:
+        - label: "Tarefa 1 / Task 1"
+        - label: "Tarefa 2 / Task 2"
+        - label: "Tarefa 3 / Task 3"
+
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: "🔗 Dependências e Pré-Requisitos | Dependencies and Prerequisites"
+      description: "Mencione outras issues ou bibliotecas que afetam esta tarefa."
+      placeholder: "Exemplo: Relacionado à Issue #123..."
+
+  - type: textarea
+    id: impacto
+    attributes:
+      label: "📊 Impacto e Considerações | Impact and Considerations"
+      description: "Descreva possíveis impactos desta issue no projeto."
+      placeholder: "Exemplo: Essa mudança pode afetar a performance..."
+
+  - type: textarea
+    id: deploy
+    attributes:
+      label: "🚀 Deploy e Integração | Deployment and Integration"
+      description: "Explique como essa tarefa será integrada e publicada."
+      placeholder: "Exemplo: O deploy deve ser realizado via GitHub Actions..."
+
+  - type: textarea
+    id: notas_adicionais
+    attributes:
+      label: "🗒️ Notas Adicionais | Additional Notes"
+      description: "Adicione qualquer comentário extra ou dúvida."
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ![Socialist Raised Fist](https://cdn.shopify.com/s/files/1/0489/6971/1782/files/Socialist_Raised_Fist_480x480.png?v=1606881055)
