@@ -28,11 +28,6 @@ Este projeto está aberto a contribuições! Ainda estamos definindo regras para
 
 This project is open for contributions! Contribution guidelines are still being defined, but if you have any suggestions, feel free to contact us or open an issue.
 
-## 📜 Licença | License
-Este projeto está licenciado sob a **MIT License**. Consulte o arquivo [`LICENSE`](./LICENSE) para mais detalhes.  
-
-This project is licensed under the **MIT License**. See the [`LICENSE`](./LICENSE) file for more details.
-
 ## 📬 Contato | Contact
 - GitHub: [@follijulio](https://github.com/follijulio)
 - E-mail | Email: [follijulio@gmail.com](mailto:follijulio@gmail.com)
