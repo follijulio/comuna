@@ -1,9 +1,11 @@
+import { MainLayout } from "@/ui/layout/MainLayout";
+
 export default function Home() {
   return (
-    <div>
-      <div>
-        <div></div>
+    <MainLayout>
+      <div className="text-white">
+      HOME
       </div>
-    </div>
+    </MainLayout>
   );
 }
