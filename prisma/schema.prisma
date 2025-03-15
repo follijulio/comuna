@@ -5,4 +5,34 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
+} 
+
+
+model Thinker {
+  id      String        @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  summary String
+  image   String?
+  works   ThinkerWork[]
+}
+
+model Work {
+  id       String        @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  year     Int
+  theme    String
+  link     String?
+  fullText String?
+  image    String?
+  thinkers ThinkerWork[]
+}
+
+model ThinkerWork {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  thinker   Thinker @relation(fields: [thinkerId], references: [id])
+  thinkerId String  @db.ObjectId
+  work      Work    @relation(fields: [workId], references: [id])
+  workId    String  @db.ObjectId
+
+  @@index([thinkerId, workId], name: "thinker_work_idx")
 }
