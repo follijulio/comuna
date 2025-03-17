@@ -1,24 +1,30 @@
 import { ThinkerWork } from "./ThinkerWork";
 
 class Thinker {
-  id: string;
+  id?: string;
   name: string;
   summary: string;
-  works: ThinkerWork[];
-  image?: string;
+  image: string;
+  birth: string;
+  works?: ThinkerWork[];
+  death?: string;
 
   constructor(
-    id: string,
     name: string,
     summary: string,
-    works: ThinkerWork[],
-    image?: string
+    bith: string,
+    image: string,
+    death?: string,
+    works?: ThinkerWork[],
+    id?: string,
   ) {
     this.id = id;
     this.name = name;
     this.summary = summary;
     this.works = works;
     this.image = image;
+    this.birth = bith;
+    this.death = death;
   }
 
   serialize() {
@@ -26,7 +32,7 @@ class Thinker {
       id: this.id,
       name: this.name,
       summary: this.summary,
-      works: this.works.map(work => work.serialize()),
+      works: this.works ? this.works.map(work => work.serialize()) : [],
       image: this.image
     });
   }
