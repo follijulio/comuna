@@ -5,14 +5,15 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
-} 
-
+}
 
 model Thinker {
   id      String        @id @default(auto()) @map("_id") @db.ObjectId
   name    String
   summary String
   image   String?
+  birth   DateTime
+  death   DateTime?
   works   ThinkerWork[]
 }
 
