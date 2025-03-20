@@ -36,6 +36,6 @@ export async function PUT(request: Request) {
     return NextResponse.json({ response });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({});
+    return NextResponse.json({ error: "Internal server error", status: 500 });
   }
 }

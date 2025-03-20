@@ -11,7 +11,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "missing information ", status: 400 });
     }
 
-    const intellectual = new Thinker(name, summary, birth, image, death);
+    const intellectual = new Thinker({name, summary, birth, image, death});
 
     const controller = new CreateintellectualsController();
 
@@ -24,5 +24,6 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error(error);
+    return NextResponse.json({ error: "Internal server error", status: 500 });
   }
 }
