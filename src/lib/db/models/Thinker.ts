@@ -6,25 +6,25 @@ class Thinker {
   summary: string;
   image: string;
   birth: string;
-  works?: ThinkerWork[];
+  works?: string[];
   death?: string;
 
-  constructor(
-    name: string,
-    summary: string,
-    bith: string,
-    image: string,
-    death?: string,
-    works?: ThinkerWork[],
-    id?: string,
-  ) {
-    this.id = id;
-    this.name = name;
-    this.summary = summary;
-    this.works = works;
-    this.image = image;
-    this.birth = bith;
-    this.death = death;
+  constructor(parameters: {
+    name: string;
+    summary: string;
+    birth: string;
+    image: string;
+    death?: string;
+    works?: string[];
+    id?: string;
+  }) {
+    this.id = parameters.id;
+    this.name = parameters.name;
+    this.summary = parameters.summary;
+    this.works = parameters.works;
+    this.image = parameters.image;
+    this.birth = parameters.birth;
+    this.death = parameters.death;
   }
 
   serialize() {
@@ -32,7 +32,7 @@ class Thinker {
       id: this.id,
       name: this.name,
       summary: this.summary,
-      works: this.works ? this.works.map(work => work.serialize()) : [],
+      works: this.works,
       image: this.image
     });
   }
@@ -44,7 +44,15 @@ class Thinker {
         work as { id: string; thinkerId: string; workId: string }
       )
     );
-    return new Thinker(obj.id, obj.name, obj.summary, works, obj.image);
+    return new Thinker({
+      id: obj.id,
+      name: obj.name,
+      summary: obj.summary,
+      works: works,
+      image: obj.image,
+      birth: obj.birth,
+      death: obj.death
+    });
   }
 }
 

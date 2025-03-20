@@ -1,5 +1,5 @@
 import { Message } from "@/lib/db/models/Message";
-import { listIntellectualsService } from "../../services/intellectuals/listIntellectualsServices";
+import { listIntellectualsService } from "../../services/intellectuals/listIntellectualsService";
 
 export class listIntellectualsController {
   async listController() {

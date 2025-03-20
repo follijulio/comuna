@@ -1,4 +1,4 @@
-import { CreateintellectualsService } from "@/lib/api/services/intellectuals/createIntellectualsServices";
+import { CreateintellectualsService } from "@/lib/api/services/intellectuals/createIntellectualsService";
 import { Message } from "@/lib/db/models/Message";
 import { Thinker } from "@/lib/db/models/Thinker";
 
