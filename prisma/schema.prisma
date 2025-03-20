@@ -3,37 +3,27 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Thinker {
-  id      String        @id @default(auto()) @map("_id") @db.ObjectId
+  id      String    @id @default(uuid())
   name    String
   summary String
   image   String?
   birth   DateTime
   death   DateTime?
-  works   ThinkerWork[]
+  works   Work[]    @relation("ThinkerWorks")
 }
 
 model Work {
-  id       String        @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(uuid())
   title    String
-  year     Int
+  year     DateTime
   theme    String
   link     String?
   fullText String?
   image    String?
-  thinkers ThinkerWork[]
-}
-
-model ThinkerWork {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
-  thinker   Thinker @relation(fields: [thinkerId], references: [id])
-  thinkerId String  @db.ObjectId
-  work      Work    @relation(fields: [workId], references: [id])
-  workId    String  @db.ObjectId
-
-  @@index([thinkerId, workId], name: "thinker_work_idx")
+  thinkers Thinker[] @relation("ThinkerWorks")
 }

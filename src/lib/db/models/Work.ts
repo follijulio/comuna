@@ -1,24 +1,22 @@
-import { ThinkerWork } from "./ThinkerWork";
-
 class Work {
-  id: string;
+  id?: string;
   title: string;
-  year: number;
+  year: string;
   theme: string;
   link?: string;
   fullText?: string;
   image?: string;
-  thinkers: ThinkerWork[];
+  thinkers: string[];
 
   constructor(parameters: {
-    id: string;
     title: string;
-    year: number;
+    year: string;
     theme: string;
+    thinkers: string[];
     link?: string;
     fullText?: string;
     image?: string;
-    thinkers: ThinkerWork[];
+    id?: string;
   }) {
     this.id = parameters.id;
     this.title = parameters.title;
@@ -39,7 +37,7 @@ class Work {
       link: this.link,
       fullText: this.fullText,
       image: this.image,
-      thinkers: this.thinkers.map(t => t.serialize())
+      thinkers: this.thinkers
     });
   }
 
@@ -53,11 +51,7 @@ class Work {
       link: data.link,
       fullText: data.fullText,
       image: data.image,
-      thinkers: data.thinkers.map((t: unknown) =>
-        ThinkerWork.deserialize(
-          t as { id: string; thinkerId: string; workId: string }
-        )
-      )
+      thinkers: data.thinkers
     });
   }
 }
