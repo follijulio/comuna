@@ -3,6 +3,27 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Thinker {
+  id      String    @id @default(uuid())
+  name    String
+  summary String
+  image   String?
+  birth   DateTime
+  death   DateTime?
+  works   Work[]    @relation("ThinkerWorks")
+}
+
+model Work {
+  id       String    @id @default(uuid())
+  title    String
+  year     DateTime
+  theme    String
+  link     String?
+  fullText String?
+  image    String?
+  thinkers Thinker[] @relation("ThinkerWorks")
 }
