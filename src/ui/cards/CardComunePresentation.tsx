@@ -46,21 +46,6 @@ const GridComune: React.FC = () => {
   );
 };
 
-interface SquareProps {
-  caracter: string;
-  className?: string;
-}
-
-const Square: React.FC<SquareProps> = ({ caracter, className }) => {
-  return (
-    <div
-      className={`h-28 w-28 bg-red-500 flex justify-center items-center rounded-lg ${className}`}
-    >
-      {caracter}
-    </div>
-  );
-};
-
 interface hoverCardImageProps {
   imageLink: string;
   textHover: string;
@@ -112,4 +97,4 @@ const Cardpresentation: React.FC<cardPresentationProps> = ({
   );
 };
 
-export { GridComune, HoverCardImage, Cardpresentation, Square };
+export { GridComune, HoverCardImage, Cardpresentation };

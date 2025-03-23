@@ -1,10 +1,18 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { MainLayout } from "@/ui/layout/MainLayout";
+
 import {
   GridComune,
   Cardpresentation
 } from "@/ui/cards/CardComunePresentation";
 import CardQuote from "@/ui/cards/CardQuote";
 import CardThinkers from "@/ui/cards/CardThinkers";
-import { MainLayout } from "@/ui/layout/MainLayout";
+
+import { ApiService } from "@/hooks/useFetching";
+
+import { Thinker } from "@/lib/db/models/Thinker";
 
 const mainContent = {
   title: "Introdução ao comuna",
@@ -13,6 +21,20 @@ const mainContent = {
 };
 
 export default function Home() {
+  const [data, setData] = useState<Thinker[]>([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const thinkers = await ApiService.fetchThinkers();
+      setData(thinkers);
+      setLoading(false);
+      console.log(thinkers);
+    };
+
+    loadData();
+  }, []);
+
   return (
     <MainLayout>
       <div className="h-full w-full flex flex-col items-center gap-32">
@@ -20,11 +42,11 @@ export default function Home() {
           title={mainContent.title}
           description={mainContent.description}
         />
-        <GridComune  />
-
+        <GridComune />
         <CardQuote />
-        <CardThinkers />
-        </div>
+
+        <CardThinkers data={data} loading={isLoading} />
+      </div>
     </MainLayout>
   );
 }

@@ -1,38 +1,24 @@
 "use client";
 
+import { Thinker } from "@/lib/db/models/Thinker";
 import { jetbrains_mono } from "@/lib/fonts/fonts";
 import { useRouter } from "next/navigation";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-import { ApiService } from "@/hooks/useFetching";
-
-import { useState, useEffect } from "react";
-import { Thinker } from "@/lib/db/models/Thinker";
-
-const CardThinkers: React.FC = () => {
-  const [data, setData] = useState<Thinker[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadData = async () => {
-      const thinkers = await ApiService.fetchThinkers();
-      setData(thinkers);
-      setLoading(false);
-      console.log(thinkers);
-    };
-
-    loadData();
-  }, []);
-
+interface cardThinkerProps {
+  data: Thinker[];
+  loading: boolean;
+}
+const CardThinkers: React.FC<cardThinkerProps> = ({ data, loading }) => {
   return (
     <div
-      className={`flex flex-col text-white gap-8 ${jetbrains_mono.className}`}
+      className={`flex flex-col items-center text-white gap-8 ${jetbrains_mono.className}`}
     >
       <h2 className="text-6xl">PENSADORES COMUNISTAS</h2>
       <div className="flex flex-col gap-8">
         {loading
           ? <p>Carregando...</p>
-          : data.map(thinker =>
+          : data.map((thinker: Thinker) =>
               <MiniCardThinkers
                 key={thinker.id}
                 thinker={thinker.name}
@@ -92,7 +78,7 @@ const MiniCardThinkers: React.FC<MiniCardThinkersProps> = ({
             <img
               src={image}
               className="h-56 w-56  object-cover rounded-2xl"
-              alt=""
+              alt={thinker}
             />
           </div>
           <div className="flex flex-col h-44 w-[65rem] gap-2">
