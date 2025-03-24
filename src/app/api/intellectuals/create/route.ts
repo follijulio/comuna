@@ -5,13 +5,13 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    const { name, summary, image, birth, death } = await request.json();
+    const { name, summary, image, birth } = await request.json();
 
-    if (!name || !summary || !image || !death) {
+    if (!name || !summary || !image) {
       return NextResponse.json({ error: "missing information ", status: 400 });
     }
 
-    const intellectual = new Thinker({name, summary, birth, image, death});
+    const intellectual = new Thinker({name, summary, birth, image});
 
     const controller = new CreateintellectualsController();
 
