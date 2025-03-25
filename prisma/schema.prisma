@@ -15,6 +15,7 @@ model Thinker {
   birth   DateTime
   death   DateTime?
   works   Work[]    @relation("ThinkerWorks")
+  quotes  Quote[]
 }
 
 model Work {
@@ -26,4 +27,19 @@ model Work {
   fullText String?
   image    String?
   thinkers Thinker[] @relation("ThinkerWorks")
+}
+
+model Quote {
+  id        String  @id @default(uuid())
+  content   String
+  thinker   Thinker @relation(fields: [thinkerId], references: [id])
+  thinkerId String
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  eventDate   DateTime
+  image       String?
 }
