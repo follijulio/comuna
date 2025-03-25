@@ -1,8 +1,8 @@
-import { GetQuotesController } from "@/lib/api/controllers/quotes/getQuotesController";
-import { Message } from "@/lib/db/models/Message";
 import { NextResponse } from "next/server";
+import { Message } from "@/lib/db/models/Message";
+import { DeleteEventsController } from "@/lib/api/controllers/events/deleteEventsController";
 
-export async function POST(request: Request) {
+export async function DELETE(request: Request) {
   try {
     const { id } = await request.json();
 
@@ -10,9 +10,9 @@ export async function POST(request: Request) {
       const message = new Message(false, "missing information");
       return NextResponse.json({ message });
     }
-    const controller = new GetQuotesController();
 
-    const response = await controller.getController(id);
+    const controller = new DeleteEventsController();
+    const response = await controller.deleteController(id);
 
     return NextResponse.json({ response });
   } catch (error) {

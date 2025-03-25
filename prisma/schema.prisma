@@ -35,3 +35,11 @@ model Quote {
   thinker   Thinker @relation(fields: [thinkerId], references: [id])
   thinkerId String
 }
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  eventDate   DateTime
+  image       String?
+}

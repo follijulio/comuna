@@ -1,6 +1,7 @@
-import { GetQuotesController } from "@/lib/api/controllers/quotes/getQuotesController";
-import { Message } from "@/lib/db/models/Message";
 import { NextResponse } from "next/server";
+
+import { Message } from "@/lib/db/models/Message";
+import { GetEventController } from "@/lib/api/controllers/events/getEventController";
 
 export async function POST(request: Request) {
   try {
@@ -10,8 +11,8 @@ export async function POST(request: Request) {
       const message = new Message(false, "missing information");
       return NextResponse.json({ message });
     }
-    const controller = new GetQuotesController();
 
+    const controller = new GetEventController();
     const response = await controller.getController(id);
 
     return NextResponse.json({ response });

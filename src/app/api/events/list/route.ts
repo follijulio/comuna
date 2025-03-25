@@ -1,10 +1,9 @@
-import { ListQuotesController } from "@/lib/api/controllers/quotes/listQuotesController";
+import { ListEventsController } from "@/lib/api/controllers/events/listEventsController";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const controller = new ListQuotesController();
-
+    const controller = new ListEventsController();
     const response = await controller.listController();
 
     return NextResponse.json({ response });
