@@ -1,3 +1,5 @@
+import { Thinker } from "./Thinker";
+
 class Quote {
   id?: string;
   content: string;
@@ -24,3 +26,12 @@ class Quote {
 }
 
 export { Quote };
+
+export class QuoteWithThinker {
+  content: string;
+  thinker: Thinker;
+  constructor(content: string, thinker: Thinker) {
+    this.content = content;
+    this.thinker = thinker;
+  }
+}

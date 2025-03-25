@@ -1,23 +1,26 @@
 "use client";
 
+import { QuoteWithThinker } from "@/lib/db/models/Quote";
 import { jetbrains_mono } from "@/lib/fonts/fonts";
 import { useRouter } from "next/navigation";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-import { quotes } from "@/lib/mock/mock";
+interface cardQuoteProps {
+  quotes: QuoteWithThinker[];
+}
 
-const CardQuote: React.FC = () => {
+const CardQuote: React.FC<cardQuoteProps> = ({ quotes }) => {
   return (
     <div className="flex flex-col gap-16 text-white min-w-[83rem] items-center">
       <h2 className={`text-6xl ${jetbrains_mono.className}`}>CITAÇÕES</h2>
       <div className="grid grid-cols-2 gap-8 px-4 py-10 w-full min-h-64 bg-linear-[40deg] from-[#070707] via-[#010021] to-[#000100] rounded-2xl">
         {quotes.map(quote =>
           <MiniCardQuote
-            key={quote.id}
-            author={quote.author}
-            id={quote.id}
-            image={quote.image}
-            quote={quote.quote}
+            key={quote.thinker.id}
+            author={quote.thinker.name}
+            id={quote.thinker.id}
+            image={quote.thinker.image}
+            quote={quote.content}
           />
         )}
       </div>
@@ -31,7 +34,7 @@ interface miniCardQuoteProps {
   quote: string;
   author: string;
   image: string;
-  id: string;
+  id?: string;
 }
 
 const MiniCardQuote: React.FC<miniCardQuoteProps> = ({

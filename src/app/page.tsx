@@ -13,6 +13,7 @@ import CardThinkers from "@/ui/cards/CardThinkers";
 import { ApiService } from "@/hooks/useFetching";
 
 import { Thinker } from "@/lib/db/models/Thinker";
+import { QuoteWithThinker } from "@/lib/db/models/Quote";
 
 const mainContent = {
   title: "Introdução ao comuna",
@@ -21,13 +22,17 @@ const mainContent = {
 };
 
 export default function Home() {
-  const [data, setData] = useState<Thinker[]>([]);
+  const [dataThinkers, setDataThinkers] = useState<Thinker[]>([]);
+  const [dataQuotes, setDataQuotes] = useState<QuoteWithThinker[]>([]);
   const [isLoading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const loadData = async () => {
       const thinkers = await ApiService.fetchThinkers();
-      setData(thinkers);
+      const quotes = await ApiService.fetchQuotes();
+      setDataQuotes(quotes || []);
+      setDataThinkers(thinkers);
       setLoading(false);
       console.log(thinkers);
     };
@@ -43,9 +48,9 @@ export default function Home() {
           description={mainContent.description}
         />
         <GridComune />
-        <CardQuote />
+        <CardQuote quotes={dataQuotes} />
 
-        <CardThinkers data={data} loading={isLoading} />
+        <CardThinkers data={dataThinkers} loading={isLoading} />
       </div>
     </MainLayout>
   );
