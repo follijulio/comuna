@@ -7,7 +7,6 @@ export async function POST(request: Request) {
   try {
     const { title, description, eventDate, image } = await request.json();
 
-    console.log(image)
     if (!title || !description || !eventDate) {
       const message = new Message(false, "missing information");
       return NextResponse.json({ message });
@@ -16,8 +15,7 @@ export async function POST(request: Request) {
     const controller = new CreateEventsController();
     
     const event = new Event(title, description, eventDate, image);
-    console.log(event.image)
-    
+   
 
     const response = await controller.createController(event);
 

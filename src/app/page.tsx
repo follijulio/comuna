@@ -3,14 +3,11 @@
 import { useState, useEffect } from "react";
 import { MainLayout } from "@/ui/layout/MainLayout";
 
-
-
 import { ApiService } from "@/hooks/useFetching";
 import { Thinker } from "@/lib/db/models/Thinker";
 import { QuoteWithThinker } from "@/lib/db/models/Quote";
 import { Event } from "@/lib/db/models/Event";
 
-import "react-loading-skeleton/dist/skeleton.css";
 import { Card } from "@/ui/cards";
 
 const mainContent = {
@@ -25,7 +22,7 @@ Curabitur volutpat, nunc quis bibendum tempor, diam massa sodales ante, a feugia
 Praesent eros purus, iaculis quis malesuada a, imperdiet at nunc. Aliquam elit erat, dictum sed orci quis, tempor dignissim tortor. Donec eu velit dolor. Donec a finibus quam. Donec faucibus posuere mi. Nunc euismod lacus vel mauris luctus vulputate. Nunc pellentesque urna quam, in facilisis ligula lacinia ac. Nullam elementum faucibus elit. Nulla luctus volutpat risus, at sollicitudin ligula vulputate sed. Nullam fringilla placerat lectus. Vestibulum tincidunt ac ligula sit amet venenatis.
 
 Praesent neque magna, porttitor at sem sollicitudin, auctor lacinia mauris. Fusce enim felis, rhoncus et efficitur vel, laoreet quis ex. In mollis mi eget augue dictum, in fringilla dolor efficitur. Aenean vel venenatis ante, in finibus nisl. Sed dapibus gravida euismod. Vestibulum tincidunt blandit facilisis. Sed sodales metus dui. Vivamus cursus a erat eget auctor. Nam condimentum risus sit amet risus porttitor ultrices. Duis nec ipsum blandit, ullamcorper mauris ut, vestibulum arcu. In maximus diam in purus sollicitudin tincidunt. Aenean accumsan aliquet diam vehicula facilisis. In viverra aliquet sem, ut egestas mauris ultrices ac. Mauris sit amet dolor ultricies, tristique ex vitae, pretium nisl. Cras tempor venenatis tellus vitae bibendum.
-  `
+  `,
 };
 
 export default function Home() {
@@ -45,13 +42,10 @@ export default function Home() {
         const { events } = await ApiService.fetchEvents();
 
         if (isMounted) {
-          // Seleciona os 2 primeiros eventos
           const selectedEvents = (events || []).slice(0, 2);
           setEventsArray(selectedEvents);
 
-          // Log dos eventos retornados e selecionados
-          console.log("Eventos retornados da API:", events);
-          console.log("Eventos selecionados:", selectedEvents);
+        
 
           setDataQuotes(quotes);
           setDataThinkers(thinkers);
@@ -67,7 +61,6 @@ export default function Home() {
     };
 
     loadData();
-
     return () => {
       isMounted = false;
     };
@@ -85,9 +78,7 @@ export default function Home() {
 
         {isLoading && (
           <>
-          <div>
-            a
-          </div>
+            <div>a</div>
           </>
         )}
 

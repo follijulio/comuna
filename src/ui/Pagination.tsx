@@ -7,13 +7,17 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+export const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  totalPages,
+  onPageChange
+}) => {
   return (
     <nav className="flex items-center justify-center mt-6 space-x-3">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex items-center justify-center p-2 border border-gray-300 text-gray-600 rounded hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center justify-center h-20 w-20 text-gray-600 rounded-full hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <FaCaretLeft size={20} />
       </button>
@@ -23,7 +27,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex items-center justify-center p-2 border border-gray-300 text-gray-600 rounded hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center justify-center h-20 w-20 text-gray-600 rounded-full hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <FaCaretRight size={20} />
       </button>

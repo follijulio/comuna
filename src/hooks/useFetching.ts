@@ -53,11 +53,12 @@ export class ApiService {
   static async fetchEvents(): Promise<{ events: Event[] }> {
     try {
       const { data } = await axios.get("http://localhost:3000/api/events/list");
-      console.log("Resposta completa da API:", data); // <-- Verifique aqui!
+
       const events = data.response?.data || [];
 
       return { events };
-      // console.log(eventsArray);
+
+      
     } catch (error) {
       console.error("Error fetching events:", error);
       return { events: [] };

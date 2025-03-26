@@ -6,7 +6,7 @@ class CreateEventsController {
   async createController(event: Event) {
     const service = new CreateEventsService();
 
-    console.log(event.image)
+ 
     const response = await service.createService(event);
     if (response) {
       return new Message(true, "The event was created", response);
