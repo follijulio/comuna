@@ -1,45 +1,66 @@
 import axios from "axios";
 import { Thinker } from "@/lib/db/models/Thinker";
 import { Quote, QuoteWithThinker } from "@/lib/db/models/Quote";
+import { Event } from "@/lib/db/models/Event";
 
 export class ApiService {
-  static async fetchThinkers() {
+  static async fetchThinkers(): Promise<{ thinkers: Thinker[] }> {
     try {
       const { data } = await axios.get(
         "http://localhost:3000/api/intellectuals/list"
       );
-
       const response = data.response as { data: Thinker[] };
-
-      return response.data;
+      const thinkers = response.data;
+      return { thinkers };
     } catch (error) {
       console.error("Error fetching thinker:", error);
-      return [];
+      return { thinkers: [] };
     }
   }
 
-  static async fetchQuotes() {
+  static async fetchQuotes(): Promise<{ quotes: QuoteWithThinker[] }> {
     try {
-      console.log("1");
       const { data } = await axios.get("http://localhost:3000/api/quotes/list");
-      console.log(data.response.data);
-      const quotesArray = data.response.data;
+      const quotesArray = data.response.data as Quote[];
 
-      const quotes: QuoteWithThinker[] = [];
-      quotesArray.forEach(async (quote: Quote) => {
-        const thinker = await axios.post(
-          "http://localhost:3000/api/intellectuals/get",
-          quote.thinkerId
-        );
-        console.log("THINKER: ",thinker);
-      });
+      const quotes: QuoteWithThinker[] = await fetchQuotesAndThinkers(
+        quotesArray
+      );
 
-      return quotes;
-
-      // const response = data as { data: Quote[] };
-      // return response.data;
+      return { quotes };
     } catch (error) {
       console.error("Error fetching quotes:", error);
+      return { quotes: [] };
+    }
+
+    
+    async function fetchQuotesAndThinkers(
+      quotesArray: Quote[]
+    ): Promise<QuoteWithThinker[]> {
+      return await Promise.all(
+        quotesArray.map(async (quote: Quote) => {
+          const dataThinker = await axios.post(
+            "http://localhost:3000/api/intellectuals/get",
+            { id: quote.thinkerId }
+          );
+          const thinker = dataThinker.data.response.data as Thinker;
+          return new QuoteWithThinker(quote.content, thinker);
+        })
+      );
+    }
+  }
+
+  static async fetchEvents(): Promise<{ events: Event[] }> {
+    try {
+      const { data } = await axios.get("http://localhost:3000/api/events/list");
+      console.log("Resposta completa da API:", data); // <-- Verifique aqui!
+      const events = data.response?.data || [];
+
+      return { events };
+      // console.log(eventsArray);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+      return { events: [] };
     }
   }
 }
