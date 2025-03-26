@@ -1,119 +1,16 @@
-const panter: {
-  hover: string;
-  image: string;
-} = {
-  hover: "Partido dos Panteras Negras",
-  image:
-    "https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2016/02/4-Panthers-on-parade-at-Free-Huey-rally-in-Defermery-Park-Oakland-July-28-1968.-Photo-courtesy-of-Stephen-Shames.-1024x681.jpg"
+const mainContent = {
+  title: "Manifesto",
+  description: `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer egestas aliquam felis vel dapibus. Ut accumsan, urna a porttitor eleifend, turpis nibh accumsan ipsum, ac vehicula augue magna at turpis. Nullam at porttitor nisi. Donec velit odio, posuere non tellus et, rhoncus commodo felis. In rutrum semper facilisis. In elementum urna id sapien consectetur, ut egestas lorem pharetra. In semper suscipit ligula ut pellentesque. Duis libero quam, convallis et facilisis vel, feugiat ac mauris. Aliquam dictum erat eu vestibulum dictum.
+    Mauris nibh massa, eleifend id accumsan vitae, cursus ac nunc. Pellentesque suscipit ligula dapibus, finibus mi sit amet, maximus tellus. Nam convallis justo turpis, eu ultrices leo maximus sed. Suspendisse in pretium velit. Donec at consectetur lectus, non sollicitudin neque. Sed odio nibh, aliquet et rutrum eget, vehicula in lorem. Morbi sagittis est et auctor malesuada. Etiam dignissim eu libero sed varius. Proin tincidunt facilisis risus nec pellentesque. Nam libero enim, faucibus vitae sodales vitae, fermentum nec leo. Suspendisse at magna vel risus dignissim interdum in nec ex. Proin vitae efficitur orci.
+    Curabitur volutpat, nunc quis bibendum tempor, diam massa sodales ante, a feugiat nulla nulla quis ante. Duis mollis, nunc ac tincidunt pellentesque, dolor leo fermentum nisi, ut congue ligula urna sit amet quam. Duis consectetur nisi ac ex imperdiet consequat. Proin scelerisque ex eu nunc fringilla, id molestie erat volutpat. Praesent quis laoreet diam. Integer mi velit, congue et bibendum eu, dignissim sed justo. Cras lacus turpis, finibus et ornare venenatis, auctor interdum purus. Donec dictum mauris vitae ante iaculis consectetur.
+    Praesent eros purus, iaculis quis malesuada a, imperdiet at nunc. Aliquam elit erat, dictum sed orci quis, tempor dignissim tortor. Donec eu velit dolor. Donec a finibus quam. Donec faucibus posuere mi. Nunc euismod lacus vel mauris luctus vulputate. Nunc pellentesque urna quam, in facilisis ligula lacinia ac. Nullam elementum faucibus elit. Nulla luctus volutpat risus, at sollicitudin ligula vulputate sed. Nullam fringilla placerat lectus. Vestibulum tincidunt ac ligula sit amet venenatis.
+    Praesent neque magna, porttitor at sem sollicitudin, auctor lacinia mauris. Fusce enim felis, rhoncus et efficitur vel, laoreet quis ex. In mollis mi eget augue dictum, in fringilla dolor efficitur. Aenean vel venenatis ante, in finibus nisl. Sed dapibus gravida euismod. Vestibulum tincidunt blandit facilisis. Sed sodales metus dui. Vivamus cursus a erat eget auctor. Nam condimentum risus sit amet risus porttitor ultrices. Duis nec ipsum blandit, ullamcorper mauris ut, vestibulum arcu. In maximus diam in purus sollicitudin tincidunt. Aenean accumsan aliquet diam vehicula facilisis. In viverra aliquet sem, ut egestas mauris ultrices ac. Mauris sit amet dolor ultricies, tristique ex vitae, pretium nisl. Cras tempor venenatis tellus vitae bibendum.
+  `,
 };
 
-const marx: {
-  hover: string;
-  image: string;
-} = {
-  hover: "Karl Marx",
-  image:
-    "https://s2.glbimg.com/JFqD3-O7DfO-gh5N87tQEtNXChA=/e.glbimg.com/og/ed/f/original/2020/09/14/karl_marx_1875.jpg"
-};
-
-const engels: {
-  hover: string;
-  image: string;
-} = {
-  hover: "Friedrich Engels",
-  image:
-    "https://s1.static.brasilescola.uol.com.br/be/2020/02/friedrich-engels.jpg"
-};
-
-const revolution: {
-  hover: string;
-  image: string;
-} = {
-  hover: "Revolução de 1917",
-  image:
-    "https://ogimg.infoglobo.com.br/in/21975364-e2c-6fe/FT1086A/72528758.jpg"
-};
 
 const communism =
   "Comunismo (do latim communis) é um sistema ideológico e um movimento político, filosófico, social e econômico cujo objetivo final é o estabelecimento de uma sociedade comunista, ou seja, uma ordem socioeconômica estruturada sob as ideias de igualitarismo, propriedade comum dos meios de produção e na ausência de classes";
 
-const quotes = [
-  {
-    quote:
-      "A história de todas as sociedades até hoje é a história das lutas de classes.",
-    author: "Karl Marx",
-    image:
-      "https://revistacult.uol.com.br/home/wp-content/uploads/2017/08/imagem-site_marxfoto.jpg",
-    id: "1"
-  },
-  {
-    quote:
-      "Um imbecil pode, por si só, levantar dez vezes mais problemas que dez sábios juntos não conseguiriam resolver.",
-    author: "Vladimir Lênin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/640px-Vladimir_Lenin.jpg",
-    id: "2"
-  },
-  {
-    quote: "A liberdade é uma coisa tão preciosa que devia ser racionada.",
-    author: "Vladimir Lênin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/640px-Vladimir_Lenin.jpg",
-    id: "3"
-  },
-  {
-    quote:
-      "As ideias são muito mais poderosas do que as armas. Nós não permitimos que nossos inimigos tenham armas, por que deveríamos permitir que tenham ideias?",
-    author: "Joseph Stalin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f1/JStalin_Secretary_general_CCCP_1942.jpg",
-    id: "4"
-  },
-  {
-    quote:
-      "A teoria sem a prática de nada vale, a prática sem a teoria é cega.",
-    author: "Vladimir Lênin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/640px-Vladimir_Lenin.jpg",
-    id: "5"
-  },
-  {
-    quote:
-      "A morte de uma organização acontece quando os de baixo já não querem e os de cima já não podem.",
-    author: "Vladimir Lênin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/640px-Vladimir_Lenin.jpg",
-    id: "6"
-  },
-  {
-    quote: "O crime é produto dos excessos sociais.",
-    author: "Vladimir Lênin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/640px-Vladimir_Lenin.jpg",
-    id: "7"
-  },
-  {
-    quote: "A paz: uma trégua para a guerra.",
-    author: "Vladimir Lênin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/640px-Vladimir_Lenin.jpg",
-    id: "8"
-  },
-  {
-    quote: "Aprender, aprender sempre.",
-    author: "Vladimir Lênin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/640px-Vladimir_Lenin.jpg",
-    id: "9"
-  },
-  {
-    quote:
-      "A revolução vitoriosa num país tem por tarefa desenvolver e sustentar a revolução nos outros países.",
-    author: "Joseph Stalin",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f1/JStalin_Secretary_general_CCCP_1942.jpg",
-    id: "10"
-  }
-];
-
-export { panter, marx, engels, revolution, communism, quotes };
+export {communism, mainContent };
