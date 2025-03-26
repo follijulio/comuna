@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Communism } from "../icons/svgs/communism";
 import { expletus_sans } from "@/lib/fonts/fonts";
 
-
 interface mainLayoutProps {
   children: React.ReactNode;
 }
@@ -28,10 +27,10 @@ const navItens = [
 
 export const MainLayout: React.FC<mainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col p-8 h-screen w-screen bg-linear-[40deg] from-[#070707] via-[#010021] to-[#000100] gap-8">
-      <header className="flex w-full justify-center">
+    <div className="flex flex-col h-screen w-screen bg-linear-[40deg] from-[#070707] via-[#010021] to-[#000100]">
+      <div className="w-full h-full overflow-auto no-scrollbar items-center flex flex-col gap-8 p-8">
         <nav
-          className={`w-[82.2%] h-16 rounded-lg bg-[#010220]/35 text-white ${expletus_sans.className} text-2xl`}
+          className={`sticky top-0 z-50 w-[82.2%] h-16 rounded-lg  bg-[#010220]/80 text-white ${expletus_sans.className} text-2xl`}
         >
           <ul className="w-full flex justify-between">
             <Link href={"/"}>
@@ -51,10 +50,10 @@ export const MainLayout: React.FC<mainLayoutProps> = ({ children }) => {
             })}
           </ul>
         </nav>
-      </header>
-      <main className="w-full h-full">
-        {children}
-      </main>
+        <main>
+          {children}
+        </main>
+      </div>
     </div>
   );
 };

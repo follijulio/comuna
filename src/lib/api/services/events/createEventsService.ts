@@ -4,7 +4,7 @@ import { prismaClient } from "@/lib/db/prisma/prisma";
 class CreateEventsService {
   async createService(event: Event) {
     const prisma = prismaClient;
-    console.log(event.image);
+;
     const year = new Date(event.eventDate);
 
     const response = prisma.event.create({

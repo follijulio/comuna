@@ -1,4 +1,5 @@
-import { CreateQuoteController } from "@/lib/api/controllers/quotes/CreateQuotesController";
+
+import { CreateQuoteController } from "@/lib/api/controllers/quotes/createQuotesController";
 import { Message } from "@/lib/db/models/Message";
 import { Quote } from "@/lib/db/models/Quote";
 import { NextResponse } from "next/server";

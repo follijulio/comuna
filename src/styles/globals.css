@@ -1,1 +1,6 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }

@@ -1,7 +1,7 @@
 import { Quote } from "@/lib/db/models/Quote";
 
 import { Message } from "@/lib/db/models/Message";
-import { CreateQuoteService } from "../../services/quotes/CreateQuotesService";
+import { CreateQuoteService } from "../../services/quotes/createQuotesService";
 
 class CreateQuoteController {
   async createController(quote: Quote) {
